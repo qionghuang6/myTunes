@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "funcs.h"
+#include "linkedlist.h"
+#include "tunelibrary.h"
 
 void print_list(struct song_node * a){
   printf("[");
