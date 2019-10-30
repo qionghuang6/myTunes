@@ -6,22 +6,24 @@ void print_list(struct song_node * a){
   printf("[");
   struct song_node * curr = a;
   while (curr != NULL) {
-    printf(" %d", curr->i);
+    printf("%s:", curr->artist);
+    printf("%s;", curr->name);
     curr = curr->next;
   }
   printf(" ]\n");
 }
 
-struct song_node * insert_front(struct song_node * a, struct song_node b){
+struct song_node * insert_front(struct song_node * a, char * newauthor, char * song){
   struct song_node * newFront = malloc(sizeof(struct song_node));
-  newFront->i = b;
+  newFront->name = song;
+  newFront->artist = newauthor;
   newFront->next = a;
   return newFront;
 }
 
 struct song_node * free_list(struct song_node * a){
   while(a != NULL){
-    printf("freeing node: %d\n", a->i);
+    printf("freeing node: %s, %s\n", a->artist, a->name);
     struct song_node * next = a->next;
     free(a);
     a = next;
@@ -29,10 +31,10 @@ struct song_node * free_list(struct song_node * a){
   return a;
 }
 
-struct song_node * myremove(struct song_node *front, struct song_node data){
+struct song_node * myremove(struct song_node *front, char * myauthor, char * myname){
   struct song_node * curr = front;
   for (; curr != NULL; curr = curr->next) {
-    if(curr->i == data){
+    if(curr->artist == myauthor && curr->name = myname){
       struct song_node * next = curr->next;
       free(curr);
       curr = next;
@@ -40,7 +42,7 @@ struct song_node * myremove(struct song_node *front, struct song_node data){
     }
     else if(curr-> next != NULL ){
       struct song_node * nextnext = curr->next->next;
-      if(curr->next->i == data){
+      if(curr->next->name == myname && curr->next->artist == myauthor){
         free(curr->next);
         curr->next = nextnext;
       }
