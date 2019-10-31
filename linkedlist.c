@@ -24,6 +24,17 @@ struct song_node * insert_front(struct song_node * a, char * newauthor, char * s
 }
 
 struct song_node * insert_ordered(struct song_node * a, char * newauthor, char * song){
+  struct song_node * curr = a;
+  for (; curr != NULL; curr = curr->next) {
+    if(strcmp(newauthor,curr->artist ) < 0){
+      if(curr == a){
+        a = insert_front(a,newauthor,song);
+      }else{
+          curr = insert_front(curr, newauthor, song);
+      }
+      break;
+    }
+  }
   return a;
 }
 
