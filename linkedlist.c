@@ -1,25 +1,30 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "linkedlist.h"
 #include "tunelibrary.h"
 
 void print_list(struct song_node * a){
-  printf("[");
+  printf("[ ");
   struct song_node * curr = a;
   while (curr != NULL) {
-    printf("%s:", curr->artist);
-    printf("%s;", curr->name);
+    printf("%s: ", curr->artist);
+    printf("%s; ", curr->name);
     curr = curr->next;
   }
-  printf(" ]\n");
+  printf("]\n");
 }
 
 struct song_node * insert_front(struct song_node * a, char * newauthor, char * song){
   struct song_node * newFront = malloc(sizeof(struct song_node));
-  newFront->name = song;
-  newFront->artist = newauthor;
+  strcpy(newFront->name,song);
+  strcpy(newFront->artist,newauthor);
   newFront->next = a;
   return newFront;
+}
+
+struct song_node * insert_ordered(struct song_node * a, char * newauthor, char * song){
+  return a;
 }
 
 struct song_node * free_list(struct song_node * a){
@@ -35,7 +40,7 @@ struct song_node * free_list(struct song_node * a){
 struct song_node * myremove(struct song_node *front, char * myauthor, char * myname){
   struct song_node * curr = front;
   for (; curr != NULL; curr = curr->next) {
-    if(curr->artist == myauthor && curr->name = myname){
+    if(strcmp(curr->artist,myauthor)==0 && strcmp(curr->name,myname)==0){
       struct song_node * next = curr->next;
       free(curr);
       curr = next;
@@ -43,7 +48,7 @@ struct song_node * myremove(struct song_node *front, char * myauthor, char * myn
     }
     else if(curr-> next != NULL ){
       struct song_node * nextnext = curr->next->next;
-      if(curr->next->name == myname && curr->next->artist == myauthor){
+      if(strcmp(curr->next->name, myname) == 0 && strcmp(curr->next->artist,myauthor)==0){
         free(curr->next);
         curr->next = nextnext;
       }

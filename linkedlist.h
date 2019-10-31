@@ -6,6 +6,6 @@ struct song_node{
 
 void print_list(struct song_node * a);
 struct song_node * insert_front(struct song_node * a, char * newauthor, char * song);
-//struct song_node * insert_ordered(struct song_node * a, struct song_node b);
+struct song_node * insert_ordered(struct song_node * a, char * newauthor, char * song);
 struct song_node * free_list(struct song_node * a);
 struct song_node * myremove(struct song_node *front, char * myauthor, char * myname);
