@@ -31,13 +31,19 @@ struct song_node * insert_front(struct song_node * a, char * newauthor, char * s
 struct song_node * insert_ordered(struct song_node * a, char * newauthor, char * song){
   //set up variables for looping through and for tracking the last node changed
   struct song_node * curr = a;
-  struct song_node * last_node = a;
+  struct song_node * last_node = NULL;
   for (; curr != NULL; curr = curr->next) {
     //loops through and checks if the author is already too big, if so, add new node to
     //the front of the node and then set the previous node to this node
-    if(strcmp(newauthor,curr->artist ) < 0){
+    if(strcmp(newauthor,curr->artist ) < 0 ||
+    (strcmp(newauthor,curr->artist ) == 0 && strcmp(song,curr->name ) < 0)){
       printf("HI!\n");
-      last_node->next = insert_front(curr, newauthor, song);
+      //for if we're at the front of the list
+      if(last_node == NULL){
+          a = insert_front(curr, newauthor, song);
+      } else{
+          last_node->next = insert_front(curr, newauthor, song);
+      }
       break;
     }
     //if we've already reached the end of the list, then just add the node
