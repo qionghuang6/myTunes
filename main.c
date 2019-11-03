@@ -21,11 +21,15 @@ int main() {
   print_list(list);
   list = free_list(list);
   print_list(list);
-  list = insert_front(list,"b","1");
+  list = insert_front(list,"e","1");
   list = insert_front(list,"d","3");
-  list = insert_front(list,"e","4");
+  list = insert_front(list,"b","4");
+  find_node(list,"d","3");
   print_list(list);
-  insert_ordered(list,"c","2");
+  insert_ordered(list,"f","2");
+  print_list(list);
+  list = free_list(list);
+  list = insert_ordered(list,"a","0");
   print_list(list);
   return 0;
 }
