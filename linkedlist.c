@@ -15,6 +15,7 @@ void print_list(struct song_node * a){
   }
   printf("]\n");
 }
+
 void print_node(struct song_node * a){
   printf("%s: %s\n", a->artist, a->name);
 }

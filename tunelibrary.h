@@ -8,5 +8,5 @@ void print_letter(library library, char letter);
 void print_artist(library library, char * artist);
 void print_library(library library);
 void shuffle(library library, int total_songs);
-void delete_song(library library, char * song);
+void delete_song(library library, char * song, char * artist);
 void clear_library(library library);
