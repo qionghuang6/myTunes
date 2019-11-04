@@ -15,6 +15,9 @@ void print_list(struct song_node * a){
   }
   printf("]\n");
 }
+void print_node(struct song_node * a){
+  printf("%s: %s\n", a->artist, a->name);
+}
 
 struct song_node * insert_front(struct song_node * a, char * newauthor, char * song){
   //allocate memory for new node
@@ -72,6 +75,16 @@ struct song_node * find_node(struct song_node *a, char * myauthor, char * myname
     printf("Node not found\n"  );
     return a;
 }
+struct song_node * find_author(struct song_node *a, char * myauthor){
+  for (; a != NULL; a = a->next) {
+      if(strcmp(a->artist,myauthor) == 0){
+        printf("Artist found! %s: First song: %s\n", a->artist, a->name);
+        return a;
+      }
+    }
+    printf("Author not found\n"  );
+    return a;
+}
 struct song_node * free_list(struct song_node * a){
   //loops through and frees all the nodes until it hits null
   while(a != NULL){
@@ -79,6 +92,22 @@ struct song_node * free_list(struct song_node * a){
     struct song_node * next = a->next;
     free(a);
     a = next;
+  }
+  return a;
+}
+
+size_t list_length(struct song_node * a){
+  size_t size = 0;
+  for (; a != NULL; a = a->next) {
+    size++;
+  }
+  return size;
+}
+
+struct song_node * rand_node(struct song_node * a){
+  size_t rand_size = rand() % list_length(a);
+  for (size_t i = 0; i < rand_size; i++) {
+    a = a->next;
   }
   return a;
 }
