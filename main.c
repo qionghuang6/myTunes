@@ -13,6 +13,7 @@ int main() {
   print_list(list);
   list = myremove(list, "Kanye West", "Follow God");
   print_list(list);
+  print_list(find_author(list, "Post Malone"));
   list = insert_front(list,"Maroon 5", "Memories");
   print_list(list);
   list = myremove(list,"Maroon 5", "Memories");

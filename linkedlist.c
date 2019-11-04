@@ -72,6 +72,16 @@ struct song_node * find_node(struct song_node *a, char * myauthor, char * myname
     printf("Node not found\n"  );
     return a;
 }
+struct song_node * find_author(struct song_node *a, char * myauthor){
+  for (; a != NULL; a = a->next) {
+      if(strcmp(a->artist,myauthor) == 0){
+        printf("Artist found! %s: First song: %s\n", a->artist, a->name);
+        return a;
+      }
+    }
+    printf("Author not found\n"  );
+    return a;
+}
 struct song_node * free_list(struct song_node * a){
   //loops through and frees all the nodes until it hits null
   while(a != NULL){
