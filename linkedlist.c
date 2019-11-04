@@ -15,6 +15,9 @@ void print_list(struct song_node * a){
   }
   printf("]\n");
 }
+void print_node(struct song_node * a){
+  printf("%s: %s\n", a->artist, a->name);
+}
 
 struct song_node * insert_front(struct song_node * a, char * newauthor, char * song){
   //allocate memory for new node
@@ -106,7 +109,6 @@ struct song_node * rand_node(struct song_node * a){
   for (size_t i = 0; i < rand_size; i++) {
     a = a->next;
   }
-  printf("Random Node found: %s: %s\n", a->artist, a->name);
   return a;
 }
 
