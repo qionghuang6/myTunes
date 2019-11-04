@@ -15,21 +15,21 @@ void add_song(library library, char* song, char* artist) {
   // this is for uppercase artist names
   if (artist_first_initial >= 97 && artist_first_initial <= 122) {
     int index = artist_first_initial - 97;
-    library[index] = insert_ordered(library[index], song, artist);
+    library[index] = insert_ordered(library[index], artist, song);
   } else {
-    library[26] = insert_ordered(library[26], song, artist);
+    library[26] = insert_ordered(library[26], artist, song);
   }
 }
 
 struct song_node * search_song(library library, char * song, char * artist) {
   char artist_first_initial = artist[0];
   if (artist_first_initial >= 97 && artist_first_initial <= 122) {
-    int index = artist_first_initial - 96;
+    int index = artist_first_initial - 97;
     struct song_node * section = library[index];
-    return find_node(section, song, artist);
+    return find_node(section, artist, song);
   } else {
     struct song_node * section = library[26];
-    return find_node(section, song, artist);
+    return find_node(section, artist, song);
   }
 }
 
@@ -39,6 +39,7 @@ struct song_node * search_artist(library library, char * artist) {
     index = 26;
   }
   struct song_node * section = library[index];
+  print_list(section);
   return find_author(section, artist);
 }
 
@@ -83,6 +84,7 @@ void shuffle(library library, int total_songs) {
 }
 
 void delete_song(library library, char * song, char * artist) {
+  print_list(search_song(library, song, artist));
   myremove(search_song(library, song, artist), artist, song);
 }
 

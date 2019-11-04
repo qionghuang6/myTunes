@@ -54,7 +54,7 @@ int main() {
 
   print_list(list);
   printf("===============\n\n Testing free list\n");
-  //list = free_list(list);
+  list = free_list(list);
   print_list(list);
   printf("===============\n");
 
@@ -74,30 +74,30 @@ int main() {
   add_song(mytunes, "u-song", "3-artist");
 
   printf("Testing Print library\n");
-  //print_library(mytunes);
+  print_library(mytunes);
   //
   printf("Testing Print letter\n");
   print_letter(mytunes, 'b');
-  //
-  // printf("Testing find\n");
-  // printf("looking for [zoo-artist : t-song]\n");
-  // search_song(mytunes, "t-song", "zoo-artist");
-  // printf("looking for [zoo : t]\n");
-  // search_song(mytunes, "t", "zoo");
-  //
-  // printf("Testing remove\n");
-  // printf("removing : [zoo-artist : t-song]\n");
-  // delete_song(mytunes, "t-song", "zoo-artist");
-  // print_library(mytunes);
-  //
-  // printf("Testing Print artist\n");
-  // print_artist(mytunes, "b-artist");
-  //
-  // printf("Testing shuffle\n");
-  // shuffle(mytunes, 5);
-  //
-  // printf("Testing clear_library\n");
-  // clear_library(mytunes);
-  // print_library(mytunes);
+
+  printf("Testing find\n");
+  printf("looking for [zoo-artist : t-song]\n");
+  search_song(mytunes, "t-song", "zoo-artist");
+  printf("looking for [zoo : t]\n");
+  search_song(mytunes, "t", "zoo");
+
+  printf("Testing remove\n");
+  printf("removing : [zoo-artist : t-song]\n");
+  delete_song(mytunes, "t-song", "zoo-artist");
+  print_library(mytunes);
+
+  printf("Testing Print artist\n");
+  print_artist(mytunes, "b-artist");
+
+  printf("Testing shuffle\n");
+  shuffle(mytunes, 5);
+
+  printf("Testing clear_library\n");
+  clear_library(mytunes);
+  print_library(mytunes);
   return 0;
 }

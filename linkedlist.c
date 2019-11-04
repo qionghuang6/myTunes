@@ -41,20 +41,21 @@ struct song_node * insert_ordered(struct song_node * a, char * newauthor, char *
     //the front of the node and then set the previous node to this node
     if(strcmp(newauthor,curr->artist ) < 0 ||
     (strcmp(newauthor,curr->artist ) == 0 && strcmp(song,curr->name ) < 0)){
-      printf("HI!\n");
       //for if we're at the front of the list
       if(last_node == NULL){
           a = insert_front(curr, newauthor, song);
       } else{
           last_node->next = insert_front(curr, newauthor, song);
       }
-      break;
+      return a;
     }
     //if we've already reached the end of the list, then just add the node
     if(curr->next == NULL){
       curr->next = malloc(sizeof(struct song_node));
       strcpy(curr->next->name,song);
       strcpy(curr->next->artist,newauthor);
+      curr->next->next = NULL;
+      return a;
       break;
     }
     last_node = curr;
@@ -121,7 +122,7 @@ struct song_node * myremove(struct song_node *front, char * myauthor, char * myn
       struct song_node * next = curr->next;
       free(curr);
       curr = next;
-      front = next;
+      return curr;
     }
     //if the next node isn't null and its the right one, then free the next one and rejoin the list
     else if(curr-> next != NULL ){
