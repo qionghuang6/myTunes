@@ -1,8 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "linkedlist.h"
+#include <time.h>
 
 int main() {
+  srand(time(NULL));
   struct song_node * list;
   print_list(list);
   list = insert_front(list, "Kanye West", "Follow God");
@@ -26,6 +28,7 @@ int main() {
   list = insert_ordered(list,"d","5");
   list = insert_ordered(list,"d","3");
   list = insert_ordered(list,"d","4");
+  print_list(rand_node(list));
   find_node(list,"d","3");
   print_list(list);
   insert_ordered(list,"f","2");

@@ -93,6 +93,23 @@ struct song_node * free_list(struct song_node * a){
   return a;
 }
 
+size_t list_length(struct song_node * a){
+  size_t size = 0;
+  for (; a != NULL; a = a->next) {
+    size++;
+  }
+  return size;
+}
+
+struct song_node * rand_node(struct song_node * a){
+  size_t rand_size = rand() % list_length(a);
+  for (size_t i = 0; i < rand_size; i++) {
+    a = a->next;
+  }
+  printf("Random Node found: %s: %s\n", a->artist, a->name);
+  return a;
+}
+
 struct song_node * myremove(struct song_node *front, char * myauthor, char * myname){
   struct song_node * curr = front;
   for (; curr != NULL; curr = curr->next) {
