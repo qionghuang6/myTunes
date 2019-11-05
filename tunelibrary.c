@@ -84,8 +84,9 @@ void shuffle(library library, int total_songs) {
 }
 
 void delete_song(library library, char * song, char * artist) {
-  print_list(search_song(library, song, artist));
-  myremove(search_song(library, song, artist), artist, song);
+  char artist_first_initial = artist[0];
+  int index = index = artist_first_initial - 97;
+  myremove(library[index], artist, song);
 }
 
 void clear_library(library library) {

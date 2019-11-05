@@ -97,6 +97,7 @@ int main() {
   shuffle(mytunes, 5);
 
   printf("Testing clear_library\n");
+  print_library(mytunes);
   clear_library(mytunes);
   print_library(mytunes);
   return 0;

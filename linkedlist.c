@@ -116,12 +116,14 @@ struct song_node * rand_node(struct song_node * a){
 
 struct song_node * myremove(struct song_node *front, char * myauthor, char * myname){
   struct song_node * curr = front;
+  struct song_node * prevNode = front;
   for (; curr != NULL; curr = curr->next) {
     //if we are already the right node, free it, for if its the front
     if(strcmp(curr->artist,myauthor)==0 && strcmp(curr->name,myname)==0){
       struct song_node * next = curr->next;
       free(curr);
       curr = next;
+      prevNode->next = next;
       return curr;
     }
     //if the next node isn't null and its the right one, then free the next one and rejoin the list
@@ -132,6 +134,7 @@ struct song_node * myremove(struct song_node *front, char * myauthor, char * myn
         curr->next = nextnext;
       }
     }
+    prevNode = curr;
   }
   return front;
 }
